@@ -124,3 +124,4 @@ C:\GitWorkRepos\computerWebAPI\computerWebAPI\obj\Debug\net8.0\refint\computerWe
 C:\GitWorkRepos\computerWebAPI\computerWebAPI\obj\Debug\net8.0\computerWebAPI.pdb
 C:\GitWorkRepos\computerWebAPI\computerWebAPI\obj\Debug\net8.0\computerWebAPI.genruntimeconfig.cache
 C:\GitWorkRepos\computerWebAPI\computerWebAPI\obj\Debug\net8.0\ref\computerWebAPI.dll
+C:\GitWorkRepos\computerWebAPI\computerWebAPI\obj\Debug\net8.0\computerWebAPI.sourcelink.json

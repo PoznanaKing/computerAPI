@@ -1,6 +1,6 @@
 ﻿namespace computerWebAPI.Models
 {
-    public class DTOs
-    {
-    }
+    
+        public record CreateOsDTO(string? name);
+    
 }
