@@ -38,5 +38,10 @@ namespace computerWebAPI.Controllers
         {
             return Ok(await computerContext.Osystems.ToListAsync());
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Osystem>> GetById(Guid id)
+        {
+            return Ok(await computerContext.Osystems.FirstOrDefaultAsync(x => x.Id == id));
+        }
     }
 }
