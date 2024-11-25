@@ -1,6 +1,8 @@
 ﻿using computerWebAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Crypto.Digests;
 
 namespace computerWebAPI.Controllers
 {
@@ -15,7 +17,7 @@ namespace computerWebAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Osystem> Post(CreateOsDTO createOsDTO)
+        public async Task<ActionResult<Osystem>> Post(CreateOsDTO createOsDTO)
         {
             var os = new Osystem
             {
@@ -24,12 +26,17 @@ namespace computerWebAPI.Controllers
             };
             if (os != null)
             {
-                computerContext.Osystems.Add(os);
-                computerContext.SaveChanges();
+                await computerContext.Osystems.AddAsync(os);
+                await computerContext.SaveChangesAsync();
                 return StatusCode(201, os);
             }
 
             return BadRequest();
+        }
+        [HttpGet]
+        public async Task<ActionResult<Osystem>> Get()
+        {
+            return Ok(await computerContext.Osystems.ToListAsync());
         }
     }
 }
