@@ -45,5 +45,22 @@ namespace computerWebAPI.Controllers
         {
             return Ok(await computerContext.Comps.FirstOrDefaultAsync(c => c.Id == id));
         }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Comp>> Get(Guid id, CreateCompDTO createCompDTO)
+        {
+            var exsistingComp = await computerContext.Comps.FirstOrDefaultAsync(x => x.Id == id);
+            if (exsistingComp != null)
+            {
+                exsistingComp.Brand = createCompDTO.Brand;
+                exsistingComp.Type = createCompDTO.Type;
+                exsistingComp.Display = createCompDTO.Display;
+                exsistingComp.Memory = createCompDTO.Memory;
+
+                computerContext.Comps.Update(exsistingComp);
+                await computerContext.SaveChangesAsync();
+                return StatusCode(201, exsistingComp);
+            }
+            return NotFound();
+        }
     }
 }

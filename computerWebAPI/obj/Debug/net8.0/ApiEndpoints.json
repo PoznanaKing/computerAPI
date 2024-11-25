@@ -72,6 +72,37 @@
     ]
   },
   {
+    "ContainingType": "computerWebAPI.Controllers.CompController",
+    "Method": "Get",
+    "RelativePath": "comp/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "createCompDTO",
+        "Type": "computerWebAPI.Models.CreateCompDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "computerWebAPI.Models.Comp",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "computerWebAPI.Controllers.OsystemController",
     "Method": "Post",
     "RelativePath": "osystem",
