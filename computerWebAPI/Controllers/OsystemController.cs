@@ -36,12 +36,12 @@ namespace computerWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<Osystem>> Get()
         {
-            return Ok(await computerContext.Osystems.ToListAsync());
+            return Ok(await computerContext.Osystems.Include(x=>x.Comps).ToListAsync());
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Osystem>> GetById(Guid id)
         {
-            return Ok(await computerContext.Osystems.FirstOrDefaultAsync(x => x.Id == id));
+            return Ok(await computerContext.Osystems.Include(x => x.Comps).FirstOrDefaultAsync(x => x.Id == id));
         }
         [HttpPut("{id}")]
         public async Task<ActionResult<Osystem>> Put(Guid id, CreateOsDTO createOsDTO)

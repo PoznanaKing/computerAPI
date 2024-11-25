@@ -6,6 +6,7 @@ namespace computerWebAPI.Models;
 
 public partial class ComputerContext : DbContext
 {
+
     public ComputerContext()
     {
     }
