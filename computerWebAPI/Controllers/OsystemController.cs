@@ -57,5 +57,17 @@ namespace computerWebAPI.Controllers
 
             return NotFound();
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Osystem>> Delete(Guid id)
+        {
+            var deletingOs = await computerContext.Osystems.FirstOrDefaultAsync(x=>x.Id == id);
+            if (deletingOs != null)
+            {
+                computerContext.Osystems.Remove(deletingOs);
+                await computerContext.SaveChangesAsync();
+                return StatusCode(200,deletingOs);
+            }
+            return NotFound();
+        }
     }
 }
