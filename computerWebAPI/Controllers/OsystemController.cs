@@ -43,5 +43,19 @@ namespace computerWebAPI.Controllers
         {
             return Ok(await computerContext.Osystems.FirstOrDefaultAsync(x => x.Id == id));
         }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Osystem>> Put(Guid id, CreateOsDTO createOsDTO)
+        {
+            var updatingOs = await computerContext.Osystems.FirstOrDefaultAsync(x => x.Id == id);
+            if (updatingOs != null)
+            {
+                updatingOs.Name = createOsDTO.name;
+                computerContext.Osystems.Update(updatingOs);
+                await computerContext.SaveChangesAsync();
+                return StatusCode(200,updatingOs);
+            }
+
+            return NotFound();
+        }
     }
 }
