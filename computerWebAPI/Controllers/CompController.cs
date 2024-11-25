@@ -62,5 +62,17 @@ namespace computerWebAPI.Controllers
             }
             return NotFound();
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Comp>> Delete(Guid id)
+        {
+            var deletingComp= await computerContext.Comps.FirstOrDefaultAsync(x => x.Id == id);
+            if (deletingComp!=null)
+            {
+                computerContext.Comps.Remove(deletingComp);
+                await computerContext.SaveChangesAsync();
+                return StatusCode(201);
+            }
+            return NotFound();
+        }
     }
 }
